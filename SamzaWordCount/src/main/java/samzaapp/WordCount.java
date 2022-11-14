@@ -25,15 +25,12 @@ import org.apache.samza.util.CommandLine;
 
 public class WordCount implements StreamApplication {
   private static final String KAFKA_SYSTEM_NAME = "kafka";
-  //private static final List<String> KAFKA_CONSUMER_ZK_CONNECT = ImmutableList.of("192.168.56.101:2181", "192.168.56.102:2181", "192.168.56.103:2181"); // ubuntu1 VM in VirtualBox
-  //private static final List<String> KAFKA_PRODUCER_BOOTSTRAP_SERVERS = ImmutableList.of("192.168.56.101:9092", "192.168.56.102:9092", "192.168.56.103:9092"); // ubuntu1 VM in VirtualBox
+  private static final List<String> KAFKA_CONSUMER_ZK_CONNECT = ImmutableList.of("192.168.56.101:2181", "192.168.56.102:2181", "192.168.56.103:2181"); // zookeeper VMs in VirtualBox
+  private static final List<String> KAFKA_PRODUCER_BOOTSTRAP_SERVERS = ImmutableList.of("192.168.56.101:9092", "192.168.56.102:9092", "192.168.56.103:9092"); // kafka VMs (kafka cluster with 3 brokers) in VirtualBox
   private static final Map<String, String> KAFKA_DEFAULT_STREAM_CONFIGS = ImmutableMap.of("replication.factor", "1");
 
-//  private static final String INPUT_STREAM_ID = "sample-text2";
+//  private static final String INPUT_STREAM_ID = "sample-text";
 //  private static final String OUTPUT_STREAM_ID = "word-count-output";
-
-  private static final List<String> KAFKA_CONSUMER_ZK_CONNECT = ImmutableList.of("localhost:2181"); // zookeeper in MacBook Pro
-  private static final List<String> KAFKA_PRODUCER_BOOTSTRAP_SERVERS = ImmutableList.of("localhost:9092"); // Kafka in MacBook Pro
 
   private static final String INPUT_STREAM_ID = "test-input";
   private static final String OUTPUT_STREAM_ID = "test-output";
