@@ -40,6 +40,7 @@ public class WordCount implements StreamApplication {
 
     @Override
     public void describe(StreamApplicationDescriptor streamApplicationDescriptor) {
+        System.out.println("Starting describe()");
         KafkaSystemDescriptor kafkaSystemDescriptor = new KafkaSystemDescriptor(KAFKA_SYSTEM_NAME)
                 .withConsumerZkConnect(KAFKA_CONSUMER_ZK_CONNECT)
                 .withProducerBootstrapServers(KAFKA_PRODUCER_BOOTSTRAP_SERVERS)
@@ -70,6 +71,8 @@ public class WordCount implements StreamApplication {
                         KV.of(windowPane.getKey().getKey(),
                                 windowPane.getKey().getKey() + ": " + windowPane.getMessage().toString()))
                 .sendTo(counts);
+
+        System.out.println("Finishing describe()");
     }
 
     public static void main(String[] args) {
@@ -79,5 +82,6 @@ public class WordCount implements StreamApplication {
         LocalApplicationRunner runner = new LocalApplicationRunner(new WordCount(), config);
         runner.run();
         runner.waitForFinish();
+        System.out.println("Finish writing to Kafka topic: " + OUTPUT_STREAM_ID);
     }
 }
