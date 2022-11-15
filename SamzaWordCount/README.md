@@ -11,8 +11,8 @@ Follow [Apache Kafka Installation on Mac using Homebrew](https://medium.com/@Ank
 - Create topic `test-input`
 
 This Application is tested with:
-- JDK 8
-- Kafka 3.1.0
+- JDK 8 (JDK 11 won't work)
+- Kafka 3.1.0 (either running on localhost standalone or inside VMs as Kafka cluster)
 
 ## Run this samza application
 After cloning this Git repo, cd to this SamzaWorldCount folder, then run:
