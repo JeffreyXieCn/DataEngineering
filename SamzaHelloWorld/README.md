@@ -9,6 +9,10 @@ Follow [Apache Kafka Installation on Mac using Homebrew](https://medium.com/@Ank
 - Start Kafka
 - Create topic `test-input`
 
+This Application is tested with:
+- JDK 11
+- Kafka 3.1.0
+
 ## Run this samza application
 After cloning this Git repo, cd to this SamzaHelloWorld folder, then run:
 ```

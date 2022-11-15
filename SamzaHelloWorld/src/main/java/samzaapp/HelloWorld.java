@@ -45,11 +45,11 @@ public class HelloWorld implements StreamApplication {
         kafkaSystemDescriptor.getOutputDescriptor(OUTPUT_STREAM_ID,
             KVSerde.of(new StringSerde(), new StringSerde()));
 
-    MessageStream<KV<String, String>> lines = streamApplicationDescriptor.getInputStream(inputDescriptor);
-    System.out.println(lines.toString());
-    OutputStream<KV<String, String>> counts = streamApplicationDescriptor.getOutputStream(outputDescriptor);
+    MessageStream<KV<String, String>> msgStream = streamApplicationDescriptor.getInputStream(inputDescriptor);
+    System.out.println(msgStream.toString());
+    OutputStream<KV<String, String>> outputStream = streamApplicationDescriptor.getOutputStream(outputDescriptor);
 
-    lines.filter(kv -> kv.value.contains("hi")).sendTo(counts); // send messages containing "hi" to output stream
+    msgStream.filter(kv -> kv.value.contains("hi")).sendTo(outputStream); // send messages containing "hi" to output stream
   }
 
   public static void main(String[] args) {
